@@ -75,7 +75,10 @@
         <div class="col-lg-offset-2 col-lg-10">
           <div class="col-lg-7">
             <div class="form-control-static">
-              <p>Ask others to sign the redemption using this code:</p>
+              <p>
+                To complete redemption to {{address}},
+                {{#if receiverMerchant}}mediator{{else}}merchant/mediator{{/if}}
+                to sign this code:</p>
               <pre>{{requestCode}}</pre>
               <p>Then fill the fields below with your own private key and the signature(s) of others.</p>
             </div>

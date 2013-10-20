@@ -3,7 +3,10 @@
 {{#if showSignature}}
   <p class="lead">
     You have successfully approved redemption of
-    {{btcValue amountWithoutFee}} BTC to {{address}}. Give
+    {{btcValue amountWithoutFee}} BTC to
+    {{#if receiverBuyer}}buyer &mdash; {{/if}}
+    {{#if receiverMerchant}}merchant &mdash; {{/if}}
+    {{address}}. Give
     buyer/merchant the following signature:
   </p>
 
@@ -46,7 +49,10 @@
             {{#if hasDetails}}
               Allow redemption of
               {{btcValue amount}} BTC - {{fee}} BTC = <b>{{btcValue amountWithoutFee}} BTC</b>
-              to <b>{{address}}</b>
+              to
+              {{#if receiverBuyer}}buyer &mdash; {{/if}}
+              {{#if receiverMerchant}}merchant &mdash; {{/if}}
+              <b>{{address}}</b>
               (per transaction <a {{bind-attr href="blockchainUrl"}}>{{inputHash}}</a>).
             {{else}}
               &mdash;

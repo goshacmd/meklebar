@@ -774,6 +774,41 @@ define("meklebar/models/redemption_tx",
       signaturesNeeded: Ember.computed.alias('input.escrowOut.signaturesNeeded'),
       signers: Ember.computed.alias('input.escrowOut.signers'),
 
+      signerAddresses: function() {
+        var signers = this.get('signers');
+        if (!signers) return;
+
+        return signers.map(function(pk) {
+          return Bitcoin.Address.fromPubKey(pk).toString();
+        });
+      }.property('signers.@'),
+
+      receiverRole: function() {
+        var address = this.get('address');
+        var signers = this.get('signerAddresses');
+        if (Ember.isEmpty(address) || !signers) return;
+
+        var role;
+
+        switch (address) {
+          case signers[0]:
+            role = 'buyer';
+            break;
+          case signers[1]:
+            role = 'mediator';
+            break;
+          case signers[signers.length - 1]:
+            role = 'merchant';
+            break;
+        };
+
+        return role;
+      }.property('address', 'signerAddresses'),
+
+      receiverBuyer: Ember.computed.equal('receiverRole', 'buyer'),
+      receiverMediator: Ember.computed.equal('receiverRole', 'mediator'),
+      receiverMerchant: Ember.computed.equal('receiverRole', 'merchant'),
+
       fee: function() {
         return '0.0005';
       }.property(),
