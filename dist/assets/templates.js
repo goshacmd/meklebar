@@ -376,10 +376,46 @@ function program1(depth0,data) {
 define('meklebar/templates/index', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
   
+  
+  data.buffer.push("\"Send\"");
+  }
 
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("\"Redeem\"");
+  }
 
-  data.buffer.push("<h2>What is it</h2>\n\n<p>\n  Meklebar is a service which allows you to create bitcoin escrow transactions. The important thing\n  is that you do not have to <b>trust</b> any third party with all of your money.\n</p>\n\n<h2>What is an escrow transaction?</h2>\n\n<p>\n  Escrow transaction is a way to lock up some coins so a third party has to agree in order to spend them.\n</p>\n\n<p>\n  For example, a buyer of some good wants to trade with somebody they do not know or trust. In a case where\n  the transaction goes well, the client does not want to get any third party involved. But if something does\n  go wrong, they would like a third party &mdash; probably a professional dispute mediator &mdash; to resolve the conflict\n  and decide who gets the money.\n</p>\n\n<h2>How does it work?</h2>\n\n<p>In very simple terms, it works like this:</p>\n\n<ol>\n  <li>A buyer agrees with the merchant on a mediator</li>\n  <li>A buyer asks the merchant and the mediator for their public keys</li>\n  <li>Create an escrow transaction which requires at least 2 people to agree and list own, merchat's, and mediator's public keys</li>\n</ol>\n\n<p>Now the coins are locked up and there are three possible scenarios:</p>\n\n<ol>\n  <li>Buyer and merchant agree (a successful trade, for example)</li>\n  <li>Buyer and mediator agree (a failed trade, mediator sides with a buyer)</li>\n  <li>Merchant and mediator agree (good delivered, mediator sides witg a merchant)</li>\n</ol>\n\n<p>\n  Then the receiving party would go to \"Redeem\" tab and paste the transaction ID and receiving wallet address.\n  They would then send a special code to the mediator. The mediator would visit \"Accept\", paste the code, verify\n  the requested redemption details and, if everything is good, they would enter their private key and generate a\n  signature. They would, then, send the signature to the receiving party. The receiving party would paste their private\n  key and the other party signature and redeem the coins.\n</p>\n");
+function program5(depth0,data) {
+  
+  
+  data.buffer.push("\"Approve\"");
+  }
+
+  data.buffer.push("<h2>What is Meklebar?</h2>\n\n<p>\n  <a href=\"http://bitcoin.it/wiki/Contracts\">Bitcoin contracts</a> are awesome.\n  Yet, almost no wallet application allows creation of something more than just\n  a pay-to-address- transaction. Merkle aims to bridge this gap and allow\n  creation of escrow transactions no matter what wallet app you use.\n</p>\n\n<h2>What is an escrow transaction?</h2>\n\n<p>\n  Escrow transaction is a way to lock up some coins so a third party has to\n  agree in order to spend them.\n</p>\n\n<p>\n  For example, a buyer of some good wants to trade with somebody they do not\n  know or trust. In a case where the transaction goes well, the client does not\n  want to get any third party involved. But if something does go wrong, they\n  would like a third party &mdash; probably a professional dispute mediator\n  &mdash; to resolve the conflict and decide who gets the money.\n</p>\n\n<h2>How does it work?</h2>\n\n<h3>Buyer creates an escrow transaction</h3>\n\n<ol>\n  <li>Buyer agrees with the merchant on a mediator</li>\n  <li>Buyer asks the merchant and the mediator for their public keys</li>\n  <li>Buyer goes to ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "send", options) : helperMissing.call(depth0, "link-to", "send", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push(" tab and fills the form</li>\n  <li>Buyer is presented with Transaction ID &mdash; the buyer should share it with the merchant and the mediator</li>\n</ol>\n\n<p>Now the coins are locked up and there are three possible scenarios:</p>\n\n<ol>\n  <li>Buyer and merchant agree (a successful trade, for example)</li>\n  <li>Buyer and mediator agree (a failed trade, mediator sides with a buyer)</li>\n  <li>Merchant and mediator agree (good delivered, mediator sides with a merchant)</li>\n</ol>\n\n<h3>Buyer and merchant agree</h3>\n\n<p>\n  The simplest scenario is when buyer and marchant agree on the transaction. In\n  this case, rdemption looks like this:\n</p>\n\n<ol>\n  <li>\n    Merchant goes to ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "redeem", options) : helperMissing.call(depth0, "link-to", "redeem", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push(" tab, enters the\n    Transaction ID, that the buyer provided them with after funding the escrow,\n    and the address on which they wish to receive the money.\n  </li>\n\n  <li>\n    At this point, merchant needs two signatures to complete redemption &mdash;\n    one their own, and one of the buyer.\n  </li>\n\n  <li>\n    After entering Transaction ID and receiving address, merchant will see a\n    code that buyer will need to sign. Merchant copies this code and\n    communicates it to buyer.\n  </li>\n\n  <li>\n    Buyer goes to ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "approve", options) : helperMissing.call(depth0, "link-to", "approve", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push(" tab and pastes\n    the code. After this, they will see details of redemption transactions\n    (which amount goes to which wallet). If everything looks good, buyer pastes\n    their private key and generates the signature.\n  </li>\n\n  <li>Buyer communicates the signature to merchant.</li>\n\n  <li>\n    On redemption page, merchat pastes the singature of the buyer to one of the\n    signature fields, and enters their private key into another signature field.\n  </li>\n\n  <li>\n    If the signatures are valid, the \"Redeem\" button will become active. By\n    clicking on this button, merchant broadcasts the redemption transaction to\n    the network.\n  </li>\n\n  <li>\n    After sending the redeeming transaction, Meklbar will show the ID of\n    redeeming transaction for merchant's reference. The coins will appear in\n    merchant's wallet.\n  </li>\n</ol>\n\n<h3>Buyer and mediator agree, merchant and mediator agree</h3>\n\n<p>\n  In the cases when merchant and buyer do not agree, the mediator will decide\n  who gets the money. The redemption process will be similar to that of the\n  \"buyer and merchant agree\" scenario, with the difference being that the\n  redemption is done by the party that mediator sided with; and mediator will\n  sign the redemption.\n</p>\n\n<p>In other words:</p>\n\n<ul>\n  <li>\n    mediator sides with buyer &mdash; buyer creates redemption transaction,\n    asks mediator to sign, and completes redemptiom\n  </li>\n\n  <li>\n    mediator sides with merchant &mdash; merchant creates redemption\n    transaction, asks mediator to sign, and completes redemption\n  </li>\n</ul>\n");
+  return buffer;
   
 }); });
 

@@ -1,31 +1,36 @@
-<h2>What is it</h2>
+<h2>What is Meklebar?</h2>
 
 <p>
-  Meklebar is a service which allows you to create bitcoin escrow transactions. The important thing
-  is that you do not have to <b>trust</b> any third party with all of your money.
+  <a href="http://bitcoin.it/wiki/Contracts">Bitcoin contracts</a> are awesome.
+  Yet, almost no wallet application allows creation of something more than just
+  a pay-to-address- transaction. Merkle aims to bridge this gap and allow
+  creation of escrow transactions no matter what wallet app you use.
 </p>
 
 <h2>What is an escrow transaction?</h2>
 
 <p>
-  Escrow transaction is a way to lock up some coins so a third party has to agree in order to spend them.
+  Escrow transaction is a way to lock up some coins so a third party has to
+  agree in order to spend them.
 </p>
 
 <p>
-  For example, a buyer of some good wants to trade with somebody they do not know or trust. In a case where
-  the transaction goes well, the client does not want to get any third party involved. But if something does
-  go wrong, they would like a third party &mdash; probably a professional dispute mediator &mdash; to resolve the conflict
-  and decide who gets the money.
+  For example, a buyer of some good wants to trade with somebody they do not
+  know or trust. In a case where the transaction goes well, the client does not
+  want to get any third party involved. But if something does go wrong, they
+  would like a third party &mdash; probably a professional dispute mediator
+  &mdash; to resolve the conflict and decide who gets the money.
 </p>
 
 <h2>How does it work?</h2>
 
-<p>In very simple terms, it works like this:</p>
+<h3>Buyer creates an escrow transaction</h3>
 
 <ol>
-  <li>A buyer agrees with the merchant on a mediator</li>
-  <li>A buyer asks the merchant and the mediator for their public keys</li>
-  <li>Create an escrow transaction which requires at least 2 people to agree and list own, merchat's, and mediator's public keys</li>
+  <li>Buyer agrees with the merchant on a mediator</li>
+  <li>Buyer asks the merchant and the mediator for their public keys</li>
+  <li>Buyer goes to {{#link-to 'send'}}"Send"{{/link-to}} tab and fills the form</li>
+  <li>Buyer is presented with Transaction ID &mdash; the buyer should share it with the merchant and the mediator</li>
 </ol>
 
 <p>Now the coins are locked up and there are three possible scenarios:</p>
@@ -33,13 +38,81 @@
 <ol>
   <li>Buyer and merchant agree (a successful trade, for example)</li>
   <li>Buyer and mediator agree (a failed trade, mediator sides with a buyer)</li>
-  <li>Merchant and mediator agree (good delivered, mediator sides witg a merchant)</li>
+  <li>Merchant and mediator agree (good delivered, mediator sides with a merchant)</li>
 </ol>
 
+<h3>Buyer and merchant agree</h3>
+
 <p>
-  Then the receiving party would go to "Redeem" tab and paste the transaction ID and receiving wallet address.
-  They would then send a special code to the mediator. The mediator would visit "Accept", paste the code, verify
-  the requested redemption details and, if everything is good, they would enter their private key and generate a
-  signature. They would, then, send the signature to the receiving party. The receiving party would paste their private
-  key and the other party signature and redeem the coins.
+  The simplest scenario is when buyer and marchant agree on the transaction. In
+  this case, rdemption looks like this:
 </p>
+
+<ol>
+  <li>
+    Merchant goes to {{#link-to 'redeem'}}"Redeem"{{/link-to}} tab, enters the
+    Transaction ID, that the buyer provided them with after funding the escrow,
+    and the address on which they wish to receive the money.
+  </li>
+
+  <li>
+    At this point, merchant needs two signatures to complete redemption &mdash;
+    one their own, and one of the buyer.
+  </li>
+
+  <li>
+    After entering Transaction ID and receiving address, merchant will see a
+    code that buyer will need to sign. Merchant copies this code and
+    communicates it to buyer.
+  </li>
+
+  <li>
+    Buyer goes to {{#link-to 'approve'}}"Approve"{{/link-to}} tab and pastes
+    the code. After this, they will see details of redemption transactions
+    (which amount goes to which wallet). If everything looks good, buyer pastes
+    their private key and generates the signature.
+  </li>
+
+  <li>Buyer communicates the signature to merchant.</li>
+
+  <li>
+    On redemption page, merchat pastes the singature of the buyer to one of the
+    signature fields, and enters their private key into another signature field.
+  </li>
+
+  <li>
+    If the signatures are valid, the "Redeem" button will become active. By
+    clicking on this button, merchant broadcasts the redemption transaction to
+    the network.
+  </li>
+
+  <li>
+    After sending the redeeming transaction, Meklbar will show the ID of
+    redeeming transaction for merchant's reference. The coins will appear in
+    merchant's wallet.
+  </li>
+</ol>
+
+<h3>Buyer and mediator agree, merchant and mediator agree</h3>
+
+<p>
+  In the cases when merchant and buyer do not agree, the mediator will decide
+  who gets the money. The redemption process will be similar to that of the
+  "buyer and merchant agree" scenario, with the difference being that the
+  redemption is done by the party that mediator sided with; and mediator will
+  sign the redemption.
+</p>
+
+<p>In other words:</p>
+
+<ul>
+  <li>
+    mediator sides with buyer &mdash; buyer creates redemption transaction,
+    asks mediator to sign, and completes redemptiom
+  </li>
+
+  <li>
+    mediator sides with merchant &mdash; merchant creates redemption
+    transaction, asks mediator to sign, and completes redemption
+  </li>
+</ul>
