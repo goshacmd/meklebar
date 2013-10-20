@@ -350,20 +350,16 @@ define("meklebar/models/address",
         return Bitcoin.Util.formatValue(this.get('balance'));
       }.property('balance'),
 
-      pubkey: function(key, value) {
+      pubkey: function(key, value, old) {
         if (arguments.length === 1) {
-          if (this._pubkey) return this._pubkey;
+          if (old) return old;
 
           var privValid = this.get('privValid');
           var eckey = this.get('eckey');
           if (!privValid || !eckey) return;
 
-          this._pubkey = Crypto.util.bytesToHex(eckey.getPub());
-
-          return this._pubkey;
+          return Crypto.util.bytesToHex(eckey.getPub());
         } else {
-          this._pubkey = value;
-
           if (value && value.length > 0) {
             this.set('address', Bitcoin.Address.fromPubKey(value).toString());
           }
@@ -372,9 +368,9 @@ define("meklebar/models/address",
         }
       }.property('privValid', 'eckey'),
 
-      pubKeyOrAddress: function(key, value) {
+      pubKeyOrAddress: function(key, value, old) {
         if (arguments.length === 1) {
-          return this._pkad;
+          return old;
         } else {
           if (value.length === 34) {
             this.set('address', value);
@@ -385,7 +381,7 @@ define("meklebar/models/address",
             this.set('pubkey', '');
           }
 
-          return this._pkad = value;
+          return value;
         }
       }.property(),
 
@@ -757,8 +753,8 @@ define("meklebar/models/redemption_input",
     return RedemptionInput;
   });
 define("meklebar/models/redemption_tx",
-  ["meklebar/models/bitcoin_service","meklebar/models/escrow_out","meklebar/models/redemption_input","meklebar/models/signature"],
-  function(BitcoinService, EscrowOut, RedemptionInput, Signature) {
+  ["meklebar/models/bitcoin_service","meklebar/models/redemption_input","meklebar/models/signature"],
+  function(BitcoinService, RedemptionInput, Signature) {
     "use strict";
 
     var RedemptionTx = Ember.Object.extend({
