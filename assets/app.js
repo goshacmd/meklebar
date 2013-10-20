@@ -757,8 +757,8 @@ define("meklebar/models/redemption_input",
     return RedemptionInput;
   });
 define("meklebar/models/redemption_tx",
-  ["meklebar/models/bitcoin_service","meklebar/models/escrow_out","meklebar/models/signature"],
-  function(BitcoinService, RedemptionInput, Signature) {
+  ["meklebar/models/bitcoin_service","meklebar/models/escrow_out","meklebar/models/redemption_input","meklebar/models/signature"],
+  function(BitcoinService, EscrowOut, RedemptionInput, Signature) {
     "use strict";
 
     var RedemptionTx = Ember.Object.extend({
