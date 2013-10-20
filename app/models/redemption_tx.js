@@ -1,5 +1,4 @@
 import BitcoinService from 'meklebar/models/bitcoin_service';
-import EscrowOut from 'meklebar/models/escrow_out';
 import RedemptionInput from 'meklebar/models/redemption_input';
 import Signature from 'meklebar/models/signature';
 

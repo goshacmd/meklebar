@@ -39,20 +39,16 @@ var Address = Ember.Object.extend({
     return Bitcoin.Util.formatValue(this.get('balance'));
   }.property('balance'),
 
-  pubkey: function(key, value) {
+  pubkey: function(key, value, old) {
     if (arguments.length === 1) {
-      if (this._pubkey) return this._pubkey;
+      if (old) return old;
 
       var privValid = this.get('privValid');
       var eckey = this.get('eckey');
       if (!privValid || !eckey) return;
 
-      this._pubkey = Crypto.util.bytesToHex(eckey.getPub());
-
-      return this._pubkey;
+      return Crypto.util.bytesToHex(eckey.getPub());
     } else {
-      this._pubkey = value;
-
       if (value && value.length > 0) {
         this.set('address', Bitcoin.Address.fromPubKey(value).toString());
       }
@@ -61,9 +57,9 @@ var Address = Ember.Object.extend({
     }
   }.property('privValid', 'eckey'),
 
-  pubKeyOrAddress: function(key, value) {
+  pubKeyOrAddress: function(key, value, old) {
     if (arguments.length === 1) {
-      return this._pkad;
+      return old;
     } else {
       if (value.length === 34) {
         this.set('address', value);
@@ -74,7 +70,7 @@ var Address = Ember.Object.extend({
         this.set('pubkey', '');
       }
 
-      return this._pkad = value;
+      return value;
     }
   }.property(),
 
