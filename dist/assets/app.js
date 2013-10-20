@@ -1166,4 +1166,17 @@ define("meklebar/utils/register_components",
 
     return registerComponents;
   });
+define("meklebar/views/nav",
+  [],
+  function() {
+    "use strict";
+    var NavView = Ember.View.extend({
+      didInsertElement: function() {
+        this.$('[data-toggle=collapse]').collapse();
+      }
+    });
+
+
+    return NavView;
+  });
 //@ sourceMappingURL=app.js.map

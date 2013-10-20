@@ -1,102 +1,3 @@
-define('meklebar/templates/_nav', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, stack2, hashContexts, hashTypes, options, self=this, helperMissing=helpers.helperMissing;
-
-function program1(depth0,data) {
-  
-  
-  data.buffer.push("Meklebar");
-  }
-
-function program3(depth0,data) {
-  
-  var stack1, stack2, hashTypes, hashContexts, options;
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "send", options) : helperMissing.call(depth0, "link-to", "send", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  else { data.buffer.push(''); }
-  }
-function program4(depth0,data) {
-  
-  
-  data.buffer.push("Send");
-  }
-
-function program6(depth0,data) {
-  
-  var stack1, stack2, hashTypes, hashContexts, options;
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "redeem", options) : helperMissing.call(depth0, "link-to", "redeem", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  else { data.buffer.push(''); }
-  }
-function program7(depth0,data) {
-  
-  
-  data.buffer.push("Redeem");
-  }
-
-function program9(depth0,data) {
-  
-  var stack1, stack2, hashTypes, hashContexts, options;
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "approve", options) : helperMissing.call(depth0, "link-to", "approve", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  else { data.buffer.push(''); }
-  }
-function program10(depth0,data) {
-  
-  
-  data.buffer.push("Approve");
-  }
-
-  data.buffer.push("<nav class=\"navbar navbar-default\" role=\"navigation\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      ");
-  hashContexts = {'class': depth0};
-  hashTypes = {'class': "STRING"};
-  options = {hash:{
-    'class': ("navbar-brand")
-  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "index", options) : helperMissing.call(depth0, "link-to", "index", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n      <ul class=\"nav navbar-nav\">\n        ");
-  hashContexts = {'tagName': depth0,'href': depth0};
-  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
-  options = {hash:{
-    'tagName': ("li"),
-    'href': (false)
-  },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "send", options) : helperMissing.call(depth0, "link-to", "send", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n        ");
-  hashContexts = {'tagName': depth0,'href': depth0};
-  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
-  options = {hash:{
-    'tagName': ("li"),
-    'href': (false)
-  },inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "redeem", options) : helperMissing.call(depth0, "link-to", "redeem", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n        ");
-  hashContexts = {'tagName': depth0,'href': depth0};
-  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
-  options = {hash:{
-    'tagName': ("li"),
-    'href': (false)
-  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "approve", options) : helperMissing.call(depth0, "link-to", "approve", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n      </ul>\n    </div>\n  </div>\n</nav>\n");
-  return buffer;
-  
-}); });
-
 define('meklebar/templates/application', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -106,7 +7,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.partial || depth0.partial),stack1 ? stack1.call(depth0, "nav", options) : helperMissing.call(depth0, "partial", "nav", options))));
+  data.buffer.push(escapeExpression(((stack1 = helpers.render || depth0.render),stack1 ? stack1.call(depth0, "nav", options) : helperMissing.call(depth0, "render", "nav", options))));
   data.buffer.push("\n\n<div class=\"container\">\n  ");
   hashTypes = {};
   hashContexts = {};
@@ -479,6 +380,105 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
   data.buffer.push("<h2>What is it</h2>\n\n<p>\n  Meklebar is a service which allows you to create bitcoin escrow transactions. The important thing\n  is that you do not have to <b>trust</b> any third party with all of your money.\n</p>\n\n<h2>What is an escrow transaction?</h2>\n\n<p>\n  Escrow transaction is a way to lock up some coins so a third party has to agree in order to spend them.\n</p>\n\n<p>\n  For example, a buyer of some good wants to trade with somebody they do not know or trust. In a case where\n  the transaction goes well, the client does not want to get any third party involved. But if something does\n  go wrong, they would like a third party &mdash; probably a professional dispute mediator &mdash; to resolve the conflict\n  and decide who gets the money.\n</p>\n\n<h2>How does it work?</h2>\n\n<p>In very simple terms, it works like this:</p>\n\n<ol>\n  <li>A buyer agrees with the merchant on a mediator</li>\n  <li>A buyer asks the merchant and the mediator for their public keys</li>\n  <li>Create an escrow transaction which requires at least 2 people to agree and list own, merchat's, and mediator's public keys</li>\n</ol>\n\n<p>Now the coins are locked up and there are three possible scenarios:</p>\n\n<ol>\n  <li>Buyer and merchant agree (a successful trade, for example)</li>\n  <li>Buyer and mediator agree (a failed trade, mediator sides with a buyer)</li>\n  <li>Merchant and mediator agree (good delivered, mediator sides witg a merchant)</li>\n</ol>\n\n<p>\n  Then the receiving party would go to \"Redeem\" tab and paste the transaction ID and receiving wallet address.\n  They would then send a special code to the mediator. The mediator would visit \"Accept\", paste the code, verify\n  the requested redemption details and, if everything is good, they would enter their private key and generate a\n  signature. They would, then, send the signature to the receiving party. The receiving party would paste their private\n  key and the other party signature and redeem the coins.\n</p>\n");
+  
+}); });
+
+define('meklebar/templates/nav', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, stack2, hashContexts, hashTypes, options, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("Meklebar");
+  }
+
+function program3(depth0,data) {
+  
+  var stack1, stack2, hashTypes, hashContexts, options;
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "send", options) : helperMissing.call(depth0, "link-to", "send", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  else { data.buffer.push(''); }
+  }
+function program4(depth0,data) {
+  
+  
+  data.buffer.push("Send");
+  }
+
+function program6(depth0,data) {
+  
+  var stack1, stack2, hashTypes, hashContexts, options;
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "redeem", options) : helperMissing.call(depth0, "link-to", "redeem", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  else { data.buffer.push(''); }
+  }
+function program7(depth0,data) {
+  
+  
+  data.buffer.push("Redeem");
+  }
+
+function program9(depth0,data) {
+  
+  var stack1, stack2, hashTypes, hashContexts, options;
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "approve", options) : helperMissing.call(depth0, "link-to", "approve", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  else { data.buffer.push(''); }
+  }
+function program10(depth0,data) {
+  
+  
+  data.buffer.push("Approve");
+  }
+
+  data.buffer.push("<nav class=\"navbar navbar-default\" role=\"navigation\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      ");
+  hashContexts = {'class': depth0};
+  hashTypes = {'class': "STRING"};
+  options = {hash:{
+    'class': ("navbar-brand")
+  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "index", options) : helperMissing.call(depth0, "link-to", "index", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n      <ul class=\"nav navbar-nav\">\n        ");
+  hashContexts = {'tagName': depth0,'href': depth0};
+  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
+  options = {hash:{
+    'tagName': ("li"),
+    'href': (false)
+  },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "send", options) : helperMissing.call(depth0, "link-to", "send", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n        ");
+  hashContexts = {'tagName': depth0,'href': depth0};
+  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
+  options = {hash:{
+    'tagName': ("li"),
+    'href': (false)
+  },inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "redeem", options) : helperMissing.call(depth0, "link-to", "redeem", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n        ");
+  hashContexts = {'tagName': depth0,'href': depth0};
+  hashTypes = {'tagName': "STRING",'href': "BOOLEAN"};
+  options = {hash:{
+    'tagName': ("li"),
+    'href': (false)
+  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "approve", options) : helperMissing.call(depth0, "link-to", "approve", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n      </ul>\n    </div>\n  </div>\n</nav>\n");
+  return buffer;
   
 }); });
 
