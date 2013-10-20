@@ -1,15 +1,17 @@
 <h2>Approve escrow redemption</h2>
 
 {{#if showSignature}}
-  <div class="row">
-    <div class="col-lg-offset-3 col-lg-6">
-      <h3>Send this code to the person who asked you to sign:</h3>
+  <p class="lead">
+    You have successfully approved redemption of
+    {{btcValue amountWithoutFee}} BTC to {{address}}. Give
+    buyer/merchant the following signature:
+  </p>
 
-      <p><pre>{{signature.hex}}</pre></p>
+  <p class="lead">
+    <pre>{{signature.hex}}</pre>
+  </p>
 
-      <p><a href="#" class="btn btn-primary" {{action 'reset'}}>Reset</a></p>
-    </div>
-  </div>
+  <p><a href="#" class="btn btn-primary" {{action 'reset'}}>Reset</a></p>
 {{else}}
   <form class="form-horizontal">
     <div class="form-group">

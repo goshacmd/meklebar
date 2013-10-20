@@ -1,15 +1,17 @@
-<h2>Create an escrow transaction</h2>
+<h2>Send the coins to escrow</h2>
 
 {{#if pushSuccess}}
-  <div class="row">
-    <div class="col-lg-offset-3 col-lg-6">
-      <h3>Transaction submitted successfully</h3>
-
-      <h4>Transaction: <a {{bind-attr href="blockchainUrl"}}>{{hash}}</a></h4>
-
-      <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
-    </div>
+  <p class="lead">
+    Your escrow transaction was succesfully funded. Please, make note of
+    the Transaction ID and share it with merchant and mediator.
   </div>
+
+  <p class="lead">
+    Transaction ID is <b>{{hash}}</b>
+    <small>(<a {{bind-attr href="blockchainUrl"}}>view</a>)</small>
+  </p>
+
+  <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
 {{else}}
   <form class="form-horizontal">
     <div class="form-group">
@@ -18,7 +20,7 @@
           <div class="form-control-static">
             <p>
               To create an escrow transaction, you would need your private
-              key, as well as public keys or addresses of the intended reveiver and
+              key, as well as public keys or addresses of the intended receiver and
               the mediator.
             </p>
           </div>

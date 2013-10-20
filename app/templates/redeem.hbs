@@ -1,15 +1,18 @@
 <h2>Redeem</h2>
 
 {{#if pushSuccess}}
-  <div class="row">
-    <div class="col-lg-offset-3 col-lg-6">
-      <h3>Redemption completed successfully</h3>
+  <p class="lead">
+    You have successfully redeemed {{btcValue amountWithoutFee}} BTC from escrow
+    to the address {{address}}.
+  </p>
 
-      <h4>Transaction: <a {{bind-attr href="blockchainUrl"}}>{{hash}}</a></h4>
+  <p class="lead">
+    Redemption transacion ID is <b>{{hash}}</b>
+    <small>(<a {{bind-attr href="blockchainUrl"}}>view</a>)</small>.
+    Redemption transaction may take a while to fully confirm.
+  </p>
 
-      <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
-    </div>
-  </div>
+  <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
 {{else}}
   <form class="form-horizontal">
     <div class="form-group">
@@ -17,9 +20,8 @@
         <div class="col-lg-7">
           <div class="form-control-static">
             <p>
-              To redeem an escrow transaction, you need to know its ID, and you need
-              to have your private key, as well as the signature of the mediator or
-              other party. Fill the form below and click "Redeem".
+              To redeem escrow coins, you have to know Transaction ID, have your
+              private key, and have a signature of mediator or buyer/seller.
             </p>
           </div>
         </div>

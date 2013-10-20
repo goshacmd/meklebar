@@ -25,20 +25,29 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 define('meklebar/templates/approve', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n  <div class=\"row\">\n    <div class=\"col-lg-offset-3 col-lg-6\">\n      <h3>Send this code to the person who asked you to sign:</h3>\n\n      <p><pre>");
+  var buffer = '', stack1, hashTypes, hashContexts, options;
+  data.buffer.push("\n  <p class=\"lead\">\n    You have successfully approved redemption of\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.btcValue || depth0.btcValue),stack1 ? stack1.call(depth0, "amountWithoutFee", options) : helperMissing.call(depth0, "btcValue", "amountWithoutFee", options))));
+  data.buffer.push(" BTC to ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "address", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(". Give\n    buyer/merchant the following signature:\n  </p>\n\n  <p class=\"lead\">\n    <pre>");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "signature.hex", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</pre></p>\n\n      <p><a href=\"#\" class=\"btn btn-primary\" ");
+  data.buffer.push("</pre>\n  </p>\n\n  <p><a href=\"#\" class=\"btn btn-primary\" ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "reset", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Reset</a></p>\n    </div>\n  </div>\n");
+  data.buffer.push(">Reset</a></p>\n");
   return buffer;
   }
 
@@ -525,30 +534,39 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n  <div class=\"row\">\n    <div class=\"col-lg-offset-3 col-lg-6\">\n      <h3>Redemption completed successfully</h3>\n\n      <h4>Transaction: <a ");
+  var buffer = '', stack1, hashTypes, hashContexts, options;
+  data.buffer.push("\n  <p class=\"lead\">\n    You have successfully redeemed ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.btcValue || depth0.btcValue),stack1 ? stack1.call(depth0, "amountWithoutFee", options) : helperMissing.call(depth0, "btcValue", "amountWithoutFee", options))));
+  data.buffer.push(" BTC from escrow\n    to the address ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "address", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(".\n  </p>\n\n  <p class=\"lead\">\n    Redemption transacion ID is <b>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "hash", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</b>\n    <small>(<a ");
   hashContexts = {'href': depth0};
   hashTypes = {'href': "STRING"};
   options = {hash:{
     'href': ("blockchainUrl")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "hash", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</a></h4>\n\n      <a href=\"#\" class=\"btn btn-primary\" ");
+  data.buffer.push(">view</a>)</small>.\n    Redemption transaction may take a while to fully confirm.\n  </p>\n\n  <a href=\"#\" class=\"btn btn-primary\" ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "reset", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">OK</a>\n    </div>\n  </div>\n");
+  data.buffer.push(">OK</a>\n");
   return buffer;
   }
 
 function program3(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
-  data.buffer.push("\n  <form class=\"form-horizontal\">\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <div class=\"form-control-static\">\n            <p>\n              To redeem an escrow transaction, you need to know its ID, and you need\n              to have your private key, as well as the signature of the mediator or\n              other party. Fill the form below and click \"Redeem\".\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    ");
+  data.buffer.push("\n  <form class=\"form-horizontal\">\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <div class=\"form-control-static\">\n            <p>\n              To redeem escrow coins, you have to know Transaction ID, have your\n              private key, and have a signature of mediator or buyer/seller.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    ");
   hashContexts = {'label': depth0,'value': depth0,'valid': depth0,'placeholder': depth0,'maxlength': depth0,'input-class': depth0};
   hashTypes = {'label': "STRING",'value': "ID",'valid': "ID",'placeholder': "STRING",'maxlength': "INTEGER",'input-class': "STRING"};
   options = {hash:{
@@ -781,34 +799,34 @@ function program26(depth0,data) {
 define('meklebar/templates/send', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n  <div class=\"row\">\n    <div class=\"col-lg-offset-3 col-lg-6\">\n      <h3>Transaction submitted successfully</h3>\n\n      <h4>Transaction: <a ");
+  var buffer = '', stack1, hashTypes, hashContexts, options;
+  data.buffer.push("\n  <p class=\"lead\">\n    Your escrow transaction was succesfully funded. Please, make note of\n    the Transaction ID and share it with merchant and mediator.\n  </div>\n\n  <p class=\"lead\">\n    Transaction ID is <b>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "hash", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</b>\n    <small>(<a ");
   hashContexts = {'href': depth0};
   hashTypes = {'href': "STRING"};
   options = {hash:{
     'href': ("blockchainUrl")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "hash", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</a></h4>\n\n      <a href=\"#\" class=\"btn btn-primary\" ");
+  data.buffer.push(">view</a>)</small>\n  </p>\n\n  <a href=\"#\" class=\"btn btn-primary\" ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "reset", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">OK</a>\n    </div>\n  </div>\n");
+  data.buffer.push(">OK</a>\n");
   return buffer;
   }
 
 function program3(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
-  data.buffer.push("\n  <form class=\"form-horizontal\">\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <div class=\"form-control-static\">\n            <p>\n              To create an escrow transaction, you would need your private\n              key, as well as public keys or addresses of the intended reveiver and\n              the mediator.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    ");
+  data.buffer.push("\n  <form class=\"form-horizontal\">\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <div class=\"form-control-static\">\n            <p>\n              To create an escrow transaction, you would need your private\n              key, as well as public keys or addresses of the intended receiver and\n              the mediator.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    ");
   hashContexts = {'label': depth0,'value': depth0,'valid': depth0,'placeholder': depth0,'maxlength': depth0,'input-class': depth0};
   hashTypes = {'label': "STRING",'value': "ID",'valid': "ID",'placeholder': "STRING",'maxlength': "INTEGER",'input-class': "STRING"};
   options = {hash:{
@@ -1139,7 +1157,7 @@ function program34(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<h2>Create an escrow transaction</h2>\n\n");
+  data.buffer.push("<h2>Send the coins to escrow</h2>\n\n");
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers['if'].call(depth0, "pushSuccess", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
