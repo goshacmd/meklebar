@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meklebar</title>
+  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/app.css">
+
+  <!-- for more details visit: https://github.com/yeoman/grunt-usemin -->
+
+  <!-- build:js(.) assets/vendor.min.js -->
+  <script src="vendor/jquery/jquery.js"></script>
+  <script src="vendor/handlebars/handlebars.js"></script>
+  <script src="vendor/ember/ember.js"></script>
+  <script src="vendor/bitcoinjs-lib/bitcoin.js"></script>
+  <script src="vendor/bitcoinjs-ext.js"></script>
+  <script src="vendor/almond.js"></script>
+  <script src="vendor/resolver.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js(tmp/public) assets/app.min.js -->
+  <script src="assets/app.js"></script>
+  <script src="assets/templates.js"></script>
+  <!-- endbuild -->
+</head>
+<body>
+  <script>
+    $.ajaxSetup({ cache: false });
+    window.App = require('meklebar/app').create();
+  </script>
+</body>
+</html>

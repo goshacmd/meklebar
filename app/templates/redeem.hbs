@@ -1,0 +1,109 @@
+<h2>Redeem</h2>
+
+{{#if pushSuccess}}
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h3>Redemption completed successfully</h3>
+
+      <h4>Transaction: <a {{bind-attr href="blockchainUrl"}}>{{hash}}</a></h4>
+
+      <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
+    </div>
+  </div>
+{{else}}
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <div class="form-control-static">
+            <p>
+              To redeem an escrow transaction, you need to know its ID, and you need
+              to have your private key, as well as the signature of the mediator or
+              other party. Fill the form below and click "Redeem".
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Transaction hash" value=inputHash valid=validTx placeholder="Transaction hash" maxlength=64 input-class="form-control"}}
+      {{#if view.valid}}
+        <span class="help-block">
+          Signatures needed: {{input.escrowOut.signaturesNeeded}} (out of {{input.escrowOut.signers.length}} designated signers)
+        </span>
+      {{/if}}
+
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            Invalid transaction. It either does not exist or is not confirmed.
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Amount</label>
+      <div class="col-lg-10">
+        <div class="col-lg-7">
+          <p class="form-control-static">
+            {{#if amount}}
+              {{btcValue amount}} BTC - {{fee}} BTC = <b>{{btcValue amountWithoutFee}}</b> BTC.
+              <a href="#" {{action 'openModal' 'help/why-fee'}}>Why the fees?</a>
+            {{else}}
+              &mdash;
+            {{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Redeem to (address)" value=address valid=validAddress placeholder="Redeem to address" maxlength=34 input-class="form-control"}}
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            Invalid address.
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    {{#if moreThanOneSig}}
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+          <div class="col-lg-7">
+            <div class="form-control-static">
+              <p>Ask others to sign the redemption using this code:</p>
+              <pre>{{requestCode}}</pre>
+              <p>Then fill the fields below with your own private key and the signature(s) of others.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#each signatures}}
+      {{#validated-input label=label value=signatureOrKey valid=valid placeholder=placeholder maxlength=160 input-class="form-control"}}
+        {{#if view.focusedInvalid}}
+          <span class="has-error">
+            <span class="help-block">
+              Invalid private key or signature.
+            </span>
+          </span>
+        {{/if}}
+      {{/validated-input}}
+    {{/each}}
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <a href="#" {{bind-attr class="redeemDisabled:disabled :btn :btn-primary"}} {{action 'redeem'}}>
+            {{#if sendingTx}}Redeeming...{{else}}Redeem{{/if}}
+          </a>
+
+          {{#if error}}<b>Transaction error: {{error}}</b>{{/if}}
+        </div>
+      </div>
+    </div>
+  </form>
+{{/if}}

@@ -1,0 +1,144 @@
+<h2>Create an escrow transaction</h2>
+
+{{#if pushSuccess}}
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h3>Transaction submitted successfully</h3>
+
+      <h4>Transaction: <a {{bind-attr href="blockchainUrl"}}>{{hash}}</a></h4>
+
+      <a href="#" class="btn btn-primary" {{action 'reset'}}>OK</a>
+    </div>
+  </div>
+{{else}}
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <div class="form-control-static">
+            <p>
+              To create an escrow transaction, you would need your private
+              key, as well as public keys or addresses of the intended reveiver and
+              the mediator.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Private key (sender)" value=source.priv valid=source.addrValid placeholder="Private key" maxlength=51 input-class="form-control"}}
+      <span class="help-block"><a href="#" {{action 'openModal' 'help/private-key'}}>Why is it needed and where can I find it?</a></span>
+
+      {{#if view.valid}}
+        <span class="help-block">
+          Source: <b>{{source.address}}</b> ({{btcValue source.balance}} BTC)
+        </span>
+      {{/if}}
+
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            Invalid private key.
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    {{#validated-input label="Amount" value=amountBTC valid=validAmount comp="number" input-cols=2 step="0.1" min="0" max=source.balanceBTC input-class="form-control"}}
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            {{#unless moreThanMin}}Should be at least 0.01 BTC.{{/unless}}
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">+ fees</label>
+      <div class="col-lg-10">
+        <div class="col-lg-7">
+          <p class="form-control-static">
+            {{btcValue fee}} BTC sending fee + {{btcValue fee}} BTC redemption fee.
+            <a href="#" {{action 'openModal' 'help/why-fee'}}>Why the fees?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Total</label>
+      <div class="col-lg-10">
+        <div class="col-lg-7">
+          <p class="form-control-static"><b>{{btcValue totalAmount}} BTC</b></p>
+
+          {{#unless enoughMoney}}
+            <span class="has-error">
+              <span class="help-block">
+                Not enough money.
+              </span>
+            </span>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Receiver PK/address" value=receiver.pubKeyOrAddress valid=receiver.validParty placeholder="Receiver public key or address" maxlength=130 input-class="form-control"}}
+      <span class="help-block"><a href="#" {{action 'openModal' 'help/public-key'}}>Why is it needed and where can I find it?</a></span>
+
+      {{#if view.valid}}
+        {{#if receiver.pkoaPubKey}}
+          <span class="help-block">Address: <b>{{receiver.address}}</b></span>
+        {{/if}}
+      {{/if}}
+
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            {{#if receiver.addrNoPub}}
+              Public key for this address could not be found.
+              Please, use public key instead.
+            {{/if}}
+
+            {{#if receiver.noAddrNoPub}}Invalid address/public key.{{/if}}
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    {{#validated-input label="Mediator PK/address" value=mediator.pubKeyOrAddress valid=mediator.validParty placeholder="Mediator public key or address" maxlength=130 input-class="form-control"}}
+      <span class="help-block"><a href="#" {{action 'openModal' 'help/public-key'}}>Why is it needed and where can I find it?</a></span>
+
+      {{#if view.valid}}
+        {{#if mediator.pkoaPubKey}}
+          <span class="help-block">Address: <b>{{mediator.address}}</b></span>
+        {{/if}}
+      {{/if}}
+
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            {{#if mediator.addrNoPub}}
+              Public key for this address could not be found.
+              Please, use public key instead.
+            {{/if}}
+
+            {{#if mediator.noAddrNoPub}}Invalid address/public key.{{/if}}
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <a href="#" {{bind-attr class="sendDisabled:disabled :btn :btn-primary"}} {{action 'sendTx'}}>
+            {{#if sendingTx}}Sending transaction...{{else}}Send transaction{{/if}}
+          </a>
+
+          {{#if error}}<b>Error sending transaction: {{error}}</b>{{/if}}
+        </div>
+      </div>
+    </div>
+  </form>
+{{/if}}

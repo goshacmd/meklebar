@@ -1,0 +1,45 @@
+<h2>What is it</h2>
+
+<p>
+  Meklebar is a service which allows you to create bitcoin escrow transactions. The important thing
+  is that you do not have to <b>trust</b> any third party with all of your money.
+</p>
+
+<h2>What is an escrow transaction?</h2>
+
+<p>
+  Escrow transaction is a way to lock up some coins so a third party has to agree in order to spend them.
+</p>
+
+<p>
+  For example, a buyer of some good wants to trade with somebody they do not know or trust. In a case where
+  the transaction goes well, the client does not want to get any third party involved. But if something does
+  go wrong, they would like a third party — probably a professional dispute mediator — to resolve the conflict
+  and decide who gets the money.
+</p>
+
+<h2>How does it work?</h2>
+
+<p>In very simple terms, it works like this:</p>
+
+<ol>
+  <li>A buyer agrees with the merchant on a mediator</li>
+  <li>A buyer asks the merchant and the mediator for their public keys</li>
+  <li>Create an escrow transaction which requires at least 2 people to agree and list own, merchat's, and mediator's public keys</li>
+</ol>
+
+<p>Now the coins are locked up and there are three possible scenarios:</p>
+
+<ol>
+  <li>Buyer and merchant agree (a successful trade, for example)</li>
+  <li>Buyer and mediator agree (a failed trade, mediator sides with a buyer)</li>
+  <li>Merchant and mediator agree (good delivered, mediator sides witg a merchant)</li>
+</ol>
+
+<p>
+  Then the receiving party would go to "Redeem" tab and paste the transaction ID and receiving wallet address.
+  They would then send a special code to the mediator. The mediator would visit "Accept", paste the code, verify
+  the requested redemption details and, if everything is good, they would enter their private key and generate a
+  signature. They would, then, send the signature to the receiving party. The receiving party would paste their private
+  key and the other party signature and redeem the coins.
+</p>

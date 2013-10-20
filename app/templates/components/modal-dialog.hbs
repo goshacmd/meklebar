@@ -1,0 +1,15 @@
+<div class="modal-backdrop in"></div>
+
+<div class="modal modal-display" {{action 'close'}}>
+  <div class="modal-dialog" {{action bubbles=false}}>
+    <div class="modal-content">
+      <div class="modal-header">
+        <a {{action 'close'}} href="#" class="close">&times;</a>
+        <h4 class="modal-title">{{title}}</h4>
+      </div>
+      <div class="modal-body">
+        {{yield}}
+      </div>
+    </div>
+  </div>
+</div>

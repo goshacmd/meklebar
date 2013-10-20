@@ -1,0 +1,57 @@
+{{#modal-dialog title="On the public keys and addresses"}}
+  <p>
+    A <b>public key</b> is something that identifies your wallet.<br>
+    An <b>address</b> is a shorter representation of your public key.<br>
+    A record of your public key in an escrow transaction means that you may sign the redeeming transaction and it will be accepted.
+  </p>
+
+  <h3>Where to find address?</h3>
+
+  <p>Most of the clients list your addresses under "Receive" tab or similar. Simply go there and copy the needed address.</p>
+
+  <p>
+    Sometimes, though, like in the case when you never transacted from this address, it will not be possible to find a public key
+    for your address. In these cases will appear a red lebel below "public key/address" input field.
+  </p>
+
+  <h3>Where to find public key?</h3>
+
+  <p>Here is how you can find your public key in the popular wallet apps:</p>
+
+  <h4>Bitcoin QT</h4>
+
+  <ol>
+    <li>Launch Bitcoin QT application</li>
+    <li>Find your address in Receive/Addresses tabs, select one, click "Copy Address"</li>
+    <li>Click "Help" in menu bar</li>
+    <li>Click "Debug window"</li>
+    <li>Select "Console" tab</li>
+    <li>Type <code>validateaddress "paste your address here"</code> and press return</li>
+    <li>It will return your a hash of data</li>
+    <li>Locate "pubkey" and the corresponding public key, something like <code>03d2777f634a26d267334dab6765afd813e6361822c006bae8cc75bc0dd61eb294</code></li>
+    <li>Copy it and paste it to Meklebar</li>
+  </ol>
+
+  <h4>Blockchain Wallet</h4>
+
+  <ol>
+    <li>Log into your wallet</li>
+    <li>Select "Receive Money" tab</li>
+    <li>Locate your address and click on the "Actions" button next to it</li>
+    <li>Select "Show Public Key" there</li>
+    <li>There will appear a green notification on the right top side of the screen.
+    <li>Copy the public key and paste it to Meklebar</li>
+  </ol>
+
+  <h4>Electrum</h4>
+
+  <ol>
+    <li>Launch Electrum application</li>
+    <li>Find your address in "Receive" tab, select one, right-click and "Copy to clipboard"</li>
+    <li>Select "Console" tab</li>
+    <li>Type <code>validateaddress("paste your address here")</code> (brackets and quotes are important) and press return</li>
+    <li>It will return your a hash of data</li>
+    <li>Locate "pubkey" and the corresponding public key, something like <code>03d2777f634a26d267334dab6765afd813e6361822c006bae8cc75bc0dd61eb294</code></li>
+    <li>Copy it and paste it to Meklebar</li>
+  </ol>
+{{/modal-dialog}}

@@ -1,0 +1,77 @@
+<h2>Approve escrow redemption</h2>
+
+{{#if showSignature}}
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h3>Send this code to the person who asked you to sign:</h3>
+
+      <p><pre>{{signature.hex}}</pre></p>
+
+      <p><a href="#" class="btn btn-primary" {{action 'reset'}}>Reset</a></p>
+    </div>
+  </div>
+{{else}}
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <div class="form-control-static">
+            <p>
+              Enter the redemption request code you have received below.
+              Verify the details of the requested transfer. If it looks good to you,
+              paste your private key and generate a signature.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Code" value=code valid=codeValid comp="textarea" rows=3 placeholder="Code" input-class="form-control"}}
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            Invalid code.
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Details</label>
+      <div class="col-lg-10">
+        <div class="col-lg-7">
+          <p class="form-control-static">
+            {{#if hasDetails}}
+              Allow redemption of
+              {{btcValue amount}} BTC - {{fee}} BTC = <b>{{btcValue amountWithoutFee}} BTC</b>
+              to <b>{{address}}</b>
+              (per transaction <a {{bind-attr href="blockchainUrl"}}>{{inputHash}}</a>).
+            {{else}}
+              &mdash;
+            {{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {{#validated-input label="Private key" value=signature.signatureOrKey valid=signature.valid placeholder="Private key" maxlength=51 input-class="form-control"}}
+      <span class="help-block"><a href="#" {{action 'openModal' 'help/private-key'}}>Why is it needed and where can I find it?</a></span>
+
+      {{#if view.focusedInvalid}}
+        <span class="has-error">
+          <span class="help-block">
+            Invalid private key.
+          </span>
+        </span>
+      {{/if}}
+    {{/validated-input}}
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="col-lg-7">
+          <a href="#" {{bind-attr class="signature.valid::disabled :btn :btn-primary"}} {{action 'sign'}}>Approve redemption</a>
+        </div>
+      </div>
+    </div>
+  </form>
+{{/if}}

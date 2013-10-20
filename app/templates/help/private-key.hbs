@@ -1,0 +1,52 @@
+{{#modal-dialog title="On the private keys"}}
+  <p>
+    A <b>private key</b> is a secret number that allows you to spend your coins. Every bitcoin address has a matching private key.
+  </p>
+
+  <div class="alert alert-warning">
+    <b>Note:</b> Meklebar does not store your private key in the browser, nor does it transmit it over the network.
+    Your private key is only used for signing transactions client-side. It never leaves your computer.
+    You may check Meklebar sources to verify this statement.
+  </div>
+
+  <h3>Where to find it?</h3>
+
+  <p>Here is how you can find your private key in the popular wallet apps:</p>
+
+  <h4>Bitcoin QT</h4>
+
+  <ol>
+    <li>Launch Bitcoin QT application</li>
+    <li>Find your address in Receive/Addresses tabs, select one, click "Copy Address"</li>
+    <li>Click "Help" in menu bar</li>
+    <li>Click "Debug window"</li>
+    <li>Select "Console" tab</li>
+    <li><i>If your wallet is protected by passphrase</i>, enter <code>walletpassphrase "your pass phrase" 600</code></li>
+    <li>Type <code>dumpprivkey "paste your address here"</code> and press return</li>
+    <li>It will return your private key, something like <code>KwRt3YD1Kv4LhDSREwRZy4vv4BvVoxgPBL338NoMq1J98R6cJu8z</code></li>
+    <li>Copy it and paste it to Meklebar</li>
+  </ol>
+
+  <h4>Blockchain Wallet</h4>
+
+  <ol>
+    <li>Log into your wallet</li>
+    <li>Select "Import / Export" tab</li>
+    <li>If you are prompted for your password, enter it</li>
+    <li>Select "Export Unencrypted" in the sidebar</li>
+    <li>In a section that just appeared, find the select prompting for private key format</li>
+    <li>Select "Bitcoin-Qt Format" there</li>
+    <li>In a gray field below, locate your address</li>
+    <li>Copy the corresponding private key and paste it to Meklebar</li>
+  </ol>
+
+  <h4>Electrum</h4>
+
+  <ol>
+    <li>Launch Electrum application</li>
+    <li>Select "Receive" tab</li>
+    <li>Locate your address</li>
+    <li>Right-click it and choose "Private key"</li>
+    <li>Copy the private key and past it to Meklebar</li>
+  </ol>
+{{/modal-dialog}}

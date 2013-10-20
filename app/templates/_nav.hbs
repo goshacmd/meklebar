@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to 'index' class="navbar-brand"}}Meklebar{{/link-to}}
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        {{#link-to 'send' tagName='li' href=false}}{{#link-to 'send'}}Send{{/link-to}}{{/link-to}}
+        {{#link-to 'redeem' tagName='li' href=false}}{{#link-to 'redeem'}}Redeem{{/link-to}}{{/link-to}}
+        {{#link-to 'approve' tagName='li' href=false}}{{#link-to 'approve'}}Approve{{/link-to}}{{/link-to}}
+      </ul>
+    </div>
+  </div>
+</nav>

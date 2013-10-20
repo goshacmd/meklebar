@@ -1,0 +1,13 @@
+<label class="col-lg-2 control-label">
+  {{label}}
+</label>
+
+<div class="col-lg-10">
+  <div {{bind-attr class="inputColClass"}}>
+    {{view compView class=input-class}}
+
+    {{yield}}
+  </div>
+
+  {{validation-glyphicon condition=valid class="control-label"}}
+</div>
