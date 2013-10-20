@@ -3,15 +3,16 @@
 <p>
   <a href="http://bitcoin.it/wiki/Contracts">Bitcoin contracts</a> are awesome.
   Yet, almost no wallet application allows creation of something more than just
-  a pay-to-address- transaction. Merkle aims to bridge this gap and allow
+  a pay-to-address- transaction. Meklebar aims to bridge this gap and allow
   creation of escrow transactions no matter what wallet app you use.
 </p>
 
 <h2>What is an escrow transaction?</h2>
 
 <p>
-  Escrow transaction is a way to lock up some coins so a third party has to
-  agree in order to spend them.
+  Escrow transaction is a way to lock up some coins so a third party is able
+  to assign the coins in case of a dispute, but unable to take the coins
+  themselves.
 </p>
 
 <p>
@@ -44,8 +45,8 @@
 <h3>Buyer and merchant agree</h3>
 
 <p>
-  The simplest scenario is when buyer and marchant agree on the transaction. In
-  this case, rdemption looks like this:
+  The simplest scenario is when buyer and merchant agree on the transaction. In
+  this case, redemption looks like this:
 </p>
 
 <ol>
@@ -76,7 +77,7 @@
   <li>Buyer communicates the signature to merchant.</li>
 
   <li>
-    On redemption page, merchat pastes the singature of the buyer to one of the
+    On redemption page, merchant pastes the signature of the buyer to one of the
     signature fields, and enters their private key into another signature field.
   </li>
 
@@ -87,7 +88,7 @@
   </li>
 
   <li>
-    After sending the redeeming transaction, Meklbar will show the ID of
+    After sending the redeeming transaction, Meklebar will show the ID of
     redeeming transaction for merchant's reference. The coins will appear in
     merchant's wallet.
   </li>
@@ -108,7 +109,7 @@
 <ul>
   <li>
     mediator sides with buyer &mdash; buyer creates redemption transaction,
-    asks mediator to sign, and completes redemptiom
+    asks mediator to sign, and completes redemption
   </li>
 
   <li>
