@@ -29,13 +29,23 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, hashTypes, hashContexts, options;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options;
   data.buffer.push("\n  <p class=\"lead\">\n    You have successfully approved redemption of\n    ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.btcValue || depth0.btcValue),stack1 ? stack1.call(depth0, "amountWithoutFee", options) : helperMissing.call(depth0, "btcValue", "amountWithoutFee", options))));
-  data.buffer.push(" BTC to ");
+  data.buffer.push(" BTC to\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers['if'].call(depth0, "receiverBuyer", {hash:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers['if'].call(depth0, "receiverMerchant", {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "address", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -50,8 +60,19 @@ function program1(depth0,data) {
   data.buffer.push(">Reset</a></p>\n");
   return buffer;
   }
+function program2(depth0,data) {
+  
+  
+  data.buffer.push("buyer &mdash; ");
+  }
 
-function program3(depth0,data) {
+function program4(depth0,data) {
+  
+  
+  data.buffer.push("merchant &mdash; ");
+  }
+
+function program6(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
   data.buffer.push("\n  <form class=\"form-horizontal\">\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <div class=\"form-control-static\">\n            <p>\n              Enter the redemption request code you have received below.\n              Verify the details of the requested transfer. If it looks good to you,\n              paste your private key and generate a signature.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    ");
@@ -65,13 +86,13 @@ function program3(depth0,data) {
     'rows': (3),
     'placeholder': ("Code"),
     'input-class': ("form-control")
-  },inverse:self.noop,fn:self.program(4, program4, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  },inverse:self.noop,fn:self.program(7, program7, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['validated-input'] || depth0['validated-input']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "validated-input", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n\n    <div class=\"form-group\">\n      <label class=\"col-lg-2 control-label\">Details</label>\n      <div class=\"col-lg-10\">\n        <div class=\"col-lg-7\">\n          <p class=\"form-control-static\">\n            ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers['if'].call(depth0, "hasDetails", {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers['if'].call(depth0, "hasDetails", {hash:{},inverse:self.program(12, program12, data),fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n          </p>\n        </div>\n      </div>\n    </div>\n\n    ");
   hashContexts = {'label': depth0,'value': depth0,'valid': depth0,'placeholder': depth0,'maxlength': depth0,'input-class': depth0};
@@ -83,7 +104,7 @@ function program3(depth0,data) {
     'placeholder': ("Private key"),
     'maxlength': (51),
     'input-class': ("form-control")
-  },inverse:self.noop,fn:self.program(11, program11, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  },inverse:self.noop,fn:self.program(14, program14, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['validated-input'] || depth0['validated-input']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "validated-input", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <a href=\"#\" ");
@@ -100,26 +121,26 @@ function program3(depth0,data) {
   data.buffer.push(">Approve redemption</a>\n        </div>\n      </div>\n    </div>\n  </form>\n");
   return buffer;
   }
-function program4(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = '', stack1, hashTypes, hashContexts;
   data.buffer.push("\n      ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n    ");
   return buffer;
   }
-function program5(depth0,data) {
+function program8(depth0,data) {
   
   
   data.buffer.push("\n        <span class=\"has-error\">\n          <span class=\"help-block\">\n            Invalid code.\n          </span>\n        </span>\n      ");
   }
 
-function program7(depth0,data) {
+function program10(depth0,data) {
   
-  var buffer = '', stack1, hashTypes, hashContexts, options;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options;
   data.buffer.push("\n              Allow redemption of\n              ");
   hashTypes = {};
   hashContexts = {};
@@ -134,7 +155,17 @@ function program7(depth0,data) {
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.btcValue || depth0.btcValue),stack1 ? stack1.call(depth0, "amountWithoutFee", options) : helperMissing.call(depth0, "btcValue", "amountWithoutFee", options))));
-  data.buffer.push(" BTC</b>\n              to <b>");
+  data.buffer.push(" BTC</b>\n              to\n              ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers['if'].call(depth0, "receiverBuyer", {hash:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n              ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers['if'].call(depth0, "receiverMerchant", {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n              <b>");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "address", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -153,13 +184,13 @@ function program7(depth0,data) {
   return buffer;
   }
 
-function program9(depth0,data) {
+function program12(depth0,data) {
   
   
   data.buffer.push("\n              &mdash;\n            ");
   }
 
-function program11(depth0,data) {
+function program14(depth0,data) {
   
   var buffer = '', stack1, hashTypes, hashContexts;
   data.buffer.push("\n      <span class=\"help-block\"><a href=\"#\" ");
@@ -169,12 +200,12 @@ function program11(depth0,data) {
   data.buffer.push(">Why is it needed and where can I find it?</a></span>\n\n      ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(12, program12, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(15, program15, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n    ");
   return buffer;
   }
-function program12(depth0,data) {
+function program15(depth0,data) {
   
   
   data.buffer.push("\n        <span class=\"has-error\">\n          <span class=\"help-block\">\n            Invalid private key.\n          </span>\n        </span>\n      ");
@@ -183,7 +214,7 @@ function program12(depth0,data) {
   data.buffer.push("<h2>Approve escrow redemption</h2>\n\n");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "showSignature", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "showSignature", {hash:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
@@ -605,7 +636,7 @@ function program3(depth0,data) {
   data.buffer.push("\n\n    ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "signatures", {hash:{},inverse:self.noop,fn:self.program(18, program18, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "signatures", {hash:{},inverse:self.noop,fn:self.program(21, program21, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n\n    <div class=\"form-group\">\n      <div class=\"col-lg-offset-2 col-lg-10\">\n        <div class=\"col-lg-7\">\n          <a href=\"#\" ");
   hashContexts = {'class': depth0};
@@ -621,12 +652,12 @@ function program3(depth0,data) {
   data.buffer.push(">\n            ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers['if'].call(depth0, "sendingTx", {hash:{},inverse:self.program(24, program24, data),fn:self.program(22, program22, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers['if'].call(depth0, "sendingTx", {hash:{},inverse:self.program(27, program27, data),fn:self.program(25, program25, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n          </a>\n\n          ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers['if'].call(depth0, "error", {hash:{},inverse:self.noop,fn:self.program(26, program26, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers['if'].call(depth0, "error", {hash:{},inverse:self.noop,fn:self.program(29, program29, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n        </div>\n      </div>\n    </div>\n  </form>\n");
   return buffer;
@@ -718,16 +749,36 @@ function program14(depth0,data) {
 
 function program16(depth0,data) {
   
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n      <div class=\"form-group\">\n        <div class=\"col-lg-offset-2 col-lg-10\">\n          <div class=\"col-lg-7\">\n            <div class=\"form-control-static\">\n              <p>Ask others to sign the redemption using this code:</p>\n              <pre>");
+  var buffer = '', stack1, hashTypes, hashContexts;
+  data.buffer.push("\n      <div class=\"form-group\">\n        <div class=\"col-lg-offset-2 col-lg-10\">\n          <div class=\"col-lg-7\">\n            <div class=\"form-control-static\">\n              <p>\n                To complete redemption to ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "address", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(",\n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "receiverMerchant", {hash:{},inverse:self.program(19, program19, data),fn:self.program(17, program17, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                to sign this code:</p>\n              <pre>");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "requestCode", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</pre>\n              <p>Then fill the fields below with your own private key and the signature(s) of others.</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    ");
   return buffer;
   }
+function program17(depth0,data) {
+  
+  
+  data.buffer.push("mediator");
+  }
 
-function program18(depth0,data) {
+function program19(depth0,data) {
+  
+  
+  data.buffer.push("merchant/mediator");
+  }
+
+function program21(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
   data.buffer.push("\n      ");
@@ -740,42 +791,42 @@ function program18(depth0,data) {
     'placeholder': ("placeholder"),
     'maxlength': (160),
     'input-class': ("form-control")
-  },inverse:self.noop,fn:self.program(19, program19, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  },inverse:self.noop,fn:self.program(22, program22, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['validated-input'] || depth0['validated-input']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "validated-input", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n    ");
   return buffer;
   }
-function program19(depth0,data) {
+function program22(depth0,data) {
   
   var buffer = '', stack1, hashTypes, hashContexts;
   data.buffer.push("\n        ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(20, program20, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "view.focusedInvalid", {hash:{},inverse:self.noop,fn:self.program(23, program23, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n      ");
   return buffer;
   }
-function program20(depth0,data) {
+function program23(depth0,data) {
   
   
   data.buffer.push("\n          <span class=\"has-error\">\n            <span class=\"help-block\">\n              Invalid private key or signature.\n            </span>\n          </span>\n        ");
   }
 
-function program22(depth0,data) {
+function program25(depth0,data) {
   
   
   data.buffer.push("Redeeming...");
   }
 
-function program24(depth0,data) {
+function program27(depth0,data) {
   
   
   data.buffer.push("Redeem");
   }
 
-function program26(depth0,data) {
+function program29(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("<b>Transaction error: ");
